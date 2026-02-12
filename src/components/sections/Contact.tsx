@@ -158,44 +158,10 @@ const Contact = () => {
           </div>
 
           {/* Main Content Grid */}
-          <div className="grid lg:grid-cols-3 gap-8 mb-16">
-            {/* Schedule Card - Aparece primero en mobile */}
-            <div
-              className={`order-1 lg:order-2 transition-all duration-700 ${
-                isVisible
-                  ? "opacity-100 translate-x-0"
-                  : "opacity-0 translate-x-10"
-              }`}
-              style={{ transitionDelay: "800ms" }}
-            >
-              <div className="bg-white rounded-2xl p-6 shadow-lg border border-slate-100">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="w-12 h-12 rounded-xl bg-primary-100 flex items-center justify-center">
-                    <FaClock className="text-primary-600 text-xl" />
-                  </div>
-                  <h4 className="text-lg font-bold text-slate-800">Horarios</h4>
-                </div>
-                <div className="space-y-3">
-                  {schedule.map((item, index) => (
-                    <div
-                      key={index}
-                      className="flex justify-between items-center py-2 border-b border-slate-100 last:border-0"
-                    >
-                      <span className="text-slate-600 font-medium">
-                        {item.day}
-                      </span>
-                      <span className="text-slate-800 font-semibold">
-                        {item.hours}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-
+          <div className="flex flex-col lg:flex-row gap-8 mb-16">
             {/* Calendly Widget - Aparece segundo en mobile */}
             <div
-              className={`lg:col-span-2 order-2 lg:order-1 transition-all duration-700 ${
+              className={`order-2 lg:order-1 lg:w-2/3 transition-all duration-700 ${
                 isVisible
                   ? "opacity-100 translate-x-0"
                   : "opacity-0 -translate-x-10"
@@ -248,30 +214,67 @@ const Contact = () => {
               </div>
             </div>
 
-            {/* WhatsApp CTA - Aparece tercero en mobile */}
-            <div
-              className={`order-3 lg:order-2 transition-all duration-700 ${
-                isVisible
-                  ? "opacity-100 translate-x-0"
-                  : "opacity-0 translate-x-10"
-              }`}
-              style={{ transitionDelay: "900ms" }}
-            >
-              <div className="bg-gradient-to-br from-green-500 to-green-600 rounded-2xl p-6 shadow-lg text-white">
-                <FaWhatsapp className="text-4xl mb-3" />
-                <h4 className="text-lg font-bold mb-2">¿Prefieres WhatsApp?</h4>
-                <p className="text-white/90 mb-4 text-sm">
-                  Chatea con nosotros directamente y agenda tu cita de forma
-                  rápida.
-                </p>
-                <a
-                  href="https://wa.me/5255500200"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block w-full text-center px-6 py-3 bg-white text-green-600 rounded-full font-bold hover:bg-green-50 transition-all"
-                >
-                  Abrir WhatsApp
-                </a>
+            {/* Sidebar con Horarios y WhatsApp */}
+            <div className="order-1 lg:order-2 lg:w-1/3 flex flex-col gap-8">
+              {/* Schedule Card */}
+              <div
+                className={`transition-all duration-700 ${
+                  isVisible
+                    ? "opacity-100 translate-x-0"
+                    : "opacity-0 translate-x-10"
+                }`}
+                style={{ transitionDelay: "800ms" }}
+              >
+                <div className="bg-white rounded-2xl p-6 shadow-lg border border-slate-100">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-12 h-12 rounded-xl bg-primary-100 flex items-center justify-center">
+                      <FaClock className="text-primary-600 text-xl" />
+                    </div>
+                    <h4 className="text-lg font-bold text-slate-800">Horarios</h4>
+                  </div>
+                  <div className="space-y-3">
+                    {schedule.map((item, index) => (
+                      <div
+                        key={index}
+                        className="flex justify-between items-center py-2 border-b border-slate-100 last:border-0"
+                      >
+                        <span className="text-slate-600 font-medium">
+                          {item.day}
+                        </span>
+                        <span className="text-slate-800 font-semibold">
+                          {item.hours}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* WhatsApp CTA */}
+              <div
+                className={`transition-all duration-700 ${
+                  isVisible
+                    ? "opacity-100 translate-x-0"
+                    : "opacity-0 translate-x-10"
+                }`}
+                style={{ transitionDelay: "900ms" }}
+              >
+                <div className="bg-gradient-to-br from-green-500 to-green-600 rounded-2xl p-6 shadow-lg text-white">
+                  <FaWhatsapp className="text-4xl mb-3" />
+                  <h4 className="text-lg font-bold mb-2">¿Prefieres WhatsApp?</h4>
+                  <p className="text-white/90 mb-4 text-sm">
+                    Chatea con nosotros directamente y agenda tu cita de forma
+                    rápida.
+                  </p>
+                  <a
+                    href="https://wa.me/5255500200"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block w-full text-center px-6 py-3 bg-white text-green-600 rounded-full font-bold hover:bg-green-50 transition-all"
+                  >
+                    Abrir WhatsApp
+                  </a>
+                </div>
               </div>
             </div>
           </div>
